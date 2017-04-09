@@ -15,6 +15,6 @@ data Page = Page { startedDateTime :: Text
                  , title           :: Text
                  , pageTimings     :: PageTimings
                  , comment         :: Maybe Text
-                 } deriving (Show)
+                 } deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''Page)

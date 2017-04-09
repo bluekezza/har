@@ -11,6 +11,6 @@ data Param = Param { name        :: Text
                    , fileName    :: Maybe Text
                    , contentType :: Maybe Text
                    , comment     :: Maybe Text
-                   } deriving (Show)
+                   } deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''Param)

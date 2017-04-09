@@ -9,6 +9,6 @@ import           Data.Text     (Text)
 data Browser = Browser { name    :: Text
                        , version :: Text
                        , comment :: Maybe Text
-                       } deriving (Show)
+                       } deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''Browser)

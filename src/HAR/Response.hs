@@ -20,6 +20,6 @@ data Response = Response { status      :: Integer
                          , headersSize :: Integer
                          , bodySize    :: Integer
                          , comment     :: Maybe Text
-                       } deriving (Show)
+                       } deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''Response)

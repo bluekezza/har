@@ -7,6 +7,6 @@ import           Data.Aeson.TH
 import           Data.Text     (Text)
 
 newtype Cache = Cache { comment :: Maybe Text
-                   } deriving (Show)
+                   } deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''Cache)

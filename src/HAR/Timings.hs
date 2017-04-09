@@ -17,6 +17,6 @@ data Timings = Timings { blocked :: Double
                        , receive :: Double
                        , ssl     :: Double
                        , comment :: Maybe Text
-                       } deriving (Show)
+                       } deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''Timings)

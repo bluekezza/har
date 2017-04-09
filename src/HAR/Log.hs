@@ -17,6 +17,6 @@ data Log = Log { version :: Text
                , pages   :: [Page]
                , entries :: [Entry]
                , comment :: Maybe Text
-               } deriving (Show)
+               } deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''Log)

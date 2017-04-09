@@ -14,6 +14,6 @@ data Cookie = Cookie { name       :: Text
                        , httpOnly :: Maybe Bool
                        , secure   :: Maybe Bool
                        , comment  :: Maybe Text
-                       } deriving (Show)
+                       } deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''Cookie)

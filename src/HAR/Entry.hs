@@ -24,6 +24,6 @@ data Entry = Entry { pageref         :: Maybe Text
                    , serverIPAddress :: Maybe Text
                    , connection      :: Maybe Text
                    , comment         :: Maybe Text
-                   } deriving (Show)
+                   } deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''Entry)

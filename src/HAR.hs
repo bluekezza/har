@@ -8,6 +8,6 @@ import           Data.Aeson.TH
 import           HAR.Log
 
 data HAR = HAR { log :: Log }
-         deriving (Show)
+         deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''HAR)

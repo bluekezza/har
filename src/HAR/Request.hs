@@ -23,6 +23,6 @@ data Request = Request { method      :: Text
                        , headersSize :: Integer
                        , bodySize    :: Integer
                        , comment     :: Maybe Text
-                       } deriving (Show)
+                       } deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''Request)

@@ -9,6 +9,6 @@ import           Data.Text     (Text)
 data Header = Header { name    :: Text
                      , value   :: Text
                      , comment :: Maybe Text
-                     } deriving (Show)
+                     } deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''Header)
