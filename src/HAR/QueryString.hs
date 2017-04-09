@@ -3,12 +3,15 @@
 
 module HAR.QueryString where
 
+import           Data.Aeson.Casing
 import           Data.Aeson.TH
 import           Data.Text     (Text)
 
-data QueryString = QueryString { name    :: Text
-                               , value   :: Text
-                               , comment :: Maybe Text
+data QueryString = QueryString { _queryStringName    :: Text
+                               , _queryStringValue   :: Text
+                               , _queryStringComment :: Maybe Text
                                } deriving (Eq, Show)
 
-$(deriveJSON defaultOptions ''QueryString)
+$(deriveJSON
+  (aesonDrop 12 camelCase)
+  ''QueryString)

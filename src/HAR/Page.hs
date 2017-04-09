@@ -6,15 +6,18 @@ module HAR.Page
          Page(..)
        ) where
 
+import           Data.Aeson.Casing
 import           Data.Aeson.TH
 import           Data.Text       (Text)
 
 import           HAR.PageTimings
-data Page = Page { startedDateTime :: Text
-                 , id              :: Text
-                 , title           :: Text
-                 , pageTimings     :: PageTimings
-                 , comment         :: Maybe Text
+data Page = Page { _pageStartedDateTime :: Text
+                 , _pageId              :: Text
+                 , _pageTitle           :: Text
+                 , _pagePageTimings     :: PageTimings
+                 , _pageComment         :: Maybe Text
                  } deriving (Eq, Show)
 
-$(deriveJSON defaultOptions ''Page)
+$(deriveJSON
+  (aesonDrop 5 camelCase)
+  ''Page)

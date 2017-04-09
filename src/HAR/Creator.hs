@@ -6,12 +6,15 @@ module HAR.Creator
          Creator(..)
        ) where
 
+import           Data.Aeson.Casing
 import           Data.Aeson.TH
 import           Data.Text     (Text)
 
-data Creator = Creator { name    :: Text
-                       , version :: Text
-                       , comment :: Maybe Text
+data Creator = Creator { _creatorName    :: Text
+                       , _creatorVersion :: Text
+                       , _creatorComment :: Maybe Text
                        } deriving (Eq, Show)
 
-$(deriveJSON defaultOptions ''Creator)
+$(deriveJSON
+  (aesonDrop 8 camelCase)
+  ''Creator)

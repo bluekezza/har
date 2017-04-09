@@ -6,6 +6,7 @@ module HAR.Entry
          Entry(..)
        ) where
 
+import           Data.Aeson.Casing
 import           Data.Aeson.TH
 import           Data.Text     (Text)
 
@@ -14,16 +15,18 @@ import           HAR.Request   (Request)
 import           HAR.Response  (Response)
 import           HAR.Timings   (Timings)
 
-data Entry = Entry { pageref         :: Maybe Text
-                   , startedDateTime :: Text
-                   , time            :: Double
-                   , request         :: Request
-                   , response        :: Response
-                   , cache           :: Maybe Cache
-                   , timings         :: Timings
-                   , serverIPAddress :: Maybe Text
-                   , connection      :: Maybe Text
-                   , comment         :: Maybe Text
+data Entry = Entry { _entryPageRef         :: Maybe Text
+                   , _entryStartedDateTime :: Text
+                   , _entryTime            :: Double
+                   , _entryRequest         :: Request
+                   , _entryResponse        :: Response
+                   , _entryCache           :: Maybe Cache
+                   , _entryTimings         :: Timings
+                   , _entryServerIpAddress :: Maybe Text
+                   , _entryConnection      :: Maybe Text
+                   , _entryComment         :: Maybe Text
                    } deriving (Eq, Show)
 
-$(deriveJSON defaultOptions ''Entry)
+$(deriveJSON
+  (aesonDrop 6 camelCase)
+  ''Entry)

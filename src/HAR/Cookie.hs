@@ -3,17 +3,20 @@
 
 module HAR.Cookie where
 
+import           Data.Aeson.Casing
 import           Data.Aeson.TH
 import           Data.Text     (Text)
 
-data Cookie = Cookie { name       :: Text
-                       , value    :: Text
-                       , path     :: Maybe Text
-                       , domain   :: Maybe Text
-                       , expires  :: Maybe Text
-                       , httpOnly :: Maybe Bool
-                       , secure   :: Maybe Bool
-                       , comment  :: Maybe Text
+data Cookie = Cookie { _cookieName       :: Text
+                       , _cookieValue    :: Text
+                       , _cookiePath     :: Maybe Text
+                       , _cookieDomain   :: Maybe Text
+                       , _cookieExpires  :: Maybe Text
+                       , _cookieHttpOnly :: Maybe Bool
+                       , _cookieSecure   :: Maybe Bool
+                       , _cookieComment  :: Maybe Text
                        } deriving (Eq, Show)
 
-$(deriveJSON defaultOptions ''Cookie)
+$(deriveJSON
+  (aesonDrop 7 camelCase)
+  ''Cookie)

@@ -10,9 +10,9 @@ import           Data.Aeson.TH
 import           Data.Text     (Text)
 
 data PageTimings = PageTimings
-                   { onContentLoad :: Maybe Double
-                   , onLoad        :: Maybe Double
-                   , comment       :: Maybe Text
+                   { _pagetimingsOnContentLoad :: Maybe Double
+                   , _pagetimingsOnLoad        :: Maybe Double
+                   , _pagetimingsComment       :: Maybe Text
                    } deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''PageTimings)

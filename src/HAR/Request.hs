@@ -3,6 +3,7 @@
 
 module HAR.Request where
 
+import           Data.Aeson.Casing
 import           Data.Aeson.TH
 import           Data.Text       (Text)
 
@@ -13,16 +14,18 @@ import           HAR.QueryString (QueryString)
 
 type URL = Text
 
-data Request = Request { method      :: Text
-                       , url         :: URL
-                       , httpVersion :: Text
-                       , cookies     :: [Cookie]
-                       , headers     :: [Header]
-                       , queryString :: [QueryString]
-                       , postData    :: Maybe PostData
-                       , headersSize :: Integer
-                       , bodySize    :: Integer
-                       , comment     :: Maybe Text
+data Request = Request { _requestMethod      :: Text
+                       , _requestUrl         :: URL
+                       , _requestHttpVersion :: Text
+                       , _requestCookies     :: [Cookie]
+                       , _requestHeaders     :: [Header]
+                       , _requestQueryString :: [QueryString]
+                       , _requestPostData    :: Maybe PostData
+                       , _requestHeadersSize :: Integer
+                       , _requestBodySize    :: Integer
+                       , _requestComment     :: Maybe Text
                        } deriving (Eq, Show)
 
-$(deriveJSON defaultOptions ''Request)
+$(deriveJSON
+  (aesonDrop 8 camelCase)
+  ''Request)
