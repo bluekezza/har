@@ -8,10 +8,11 @@ module HAR.Page
 
 import           Data.Aeson.Casing
 import           Data.Aeson.TH
+import           Data.Time.ISO8601
 import           Data.Text       (Text)
 
 import           HAR.PageTimings
-data Page = Page { _pageStartedDateTime :: Text
+data Page = Page { _pageStartedDateTime :: ISO8601
                  , _pageId              :: Text
                  , _pageTitle           :: Text
                  , _pagePageTimings     :: PageTimings

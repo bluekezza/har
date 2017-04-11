@@ -8,6 +8,7 @@ module HAR.Entry
 
 import           Data.Aeson.Casing
 import           Data.Aeson.TH
+import           Data.Time.ISO8601
 import           Data.Text     (Text)
 
 import           HAR.Cache     (Cache)
@@ -16,7 +17,7 @@ import           HAR.Response  (Response)
 import           HAR.Timings   (Timings)
 
 data Entry = Entry { _entryPageRef         :: Maybe Text
-                   , _entryStartedDateTime :: Text
+                   , _entryStartedDateTime :: ISO8601
                    , _entryTime            :: Double
                    , _entryRequest         :: Request
                    , _entryResponse        :: Response

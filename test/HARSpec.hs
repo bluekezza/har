@@ -9,6 +9,7 @@ module HARSpec where
 import Data.Aeson
 import Data.Aeson.QQ
 import Data.Aeson.Types
+import Data.Time.ISO8601
 import Prelude hiding (log)
 import Test.Hspec
 import Test.Hspec.QuickCheck
@@ -30,6 +31,9 @@ instance Arbitrary Creator where
 
 instance Arbitrary Browser where
   arbitrary = Browser <$> arbitrary <*> arbitrary <*> arbitrary
+
+instance Arbitrary ISO8601 where
+  arbitrary = ISO8601 <$> arbitrary
 
 instance Arbitrary Page where
   arbitrary =
@@ -135,7 +139,8 @@ harVal =
       , _logBrowser = Nothing
       , _logPages =
           [ Page
-            { _pageStartedDateTime = "2017-04-07T17:57:41.438Z"
+            { _pageStartedDateTime =
+                ISO8601 . parseISO8601OrError $ "2017-04-07T17:57:41.438Z"
             , _pageId = "page_1"
             , _pageTitle = "https://example.com/"
             , _pagePageTimings =
@@ -150,7 +155,8 @@ harVal =
       , _logEntries =
           [ Entry
             { _entryPageRef = Nothing
-            , _entryStartedDateTime = "2017-04-07T17:57:41.438Z"
+            , _entryStartedDateTime =
+                ISO8601 . parseISO8601OrError $ "2017-04-07T17:57:41.438Z"
             , _entryTime = 72.6410000006581
             , _entryRequest =
                 Request

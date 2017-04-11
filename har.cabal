@@ -43,7 +43,7 @@ library
     HAR.Request
     HAR.Response
     HAR.Timings
-
+    Data.Time.ISO8601
   build-depends:       base >=4.6 && <5.0
                      , aeson
                      , aeson-casing
@@ -52,6 +52,7 @@ library
                      , filepath
                      , lens
                      , text
+                     , time
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options: -Wall -fwarn-tabs -funbox-strict-fields
