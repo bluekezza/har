@@ -8,7 +8,7 @@ import           Data.Time
 
 newtype ISO8601 = ISO8601
   { unISO8601 :: UTCTime
-  } deriving (Eq, Show)
+  } deriving (Eq, Ord, Show)
 
 iso8601Format :: String
 iso8601Format = iso8601DateFormat (Just "%H:%M:%S%QZ")
