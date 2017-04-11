@@ -18,6 +18,7 @@ module HAR
   , Page (..)
   , PageTimings (..)
   , Param (..)
+  , PostDataBody (..)
   , PostData (..)
   , QueryString (..)
   , Request (..)

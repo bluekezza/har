@@ -96,8 +96,12 @@ instance Arbitrary Header where
 instance Arbitrary QueryString where
   arbitrary = QueryString <$> arbitrary <*> arbitrary <*> arbitrary
 
+-- @TODO: make sure this gets tested as it's currently not in the example value
+instance Arbitrary PostDataBody where
+  arbitrary = oneof [PostParams <$> arbitrary, PostText <$> arbitrary]
+
 instance Arbitrary PostData where
-  arbitrary = PostData <$> arbitrary <*> arbitrary <*> arbitrary <*> arbitrary
+  arbitrary = PostData <$> arbitrary <*> arbitrary <*> arbitrary
 
 instance Arbitrary Content where
   arbitrary =
