@@ -32,6 +32,7 @@ module HAR
   , HasText (..)
   , HasSize (..)
   , HasMimeType (..)
+  , HasBody (..)
   , HasEncoding (..)
   , HasCompression (..)
   , HasSecure (..)
@@ -123,7 +124,7 @@ makeFields ''Log
 makeFields ''Page
 makeFields ''PageTimings
 makeFields ''Param
-makeFields ''PostData
+makeLensesWith abbreviatedFields ''PostData
 makeFields ''Request
 makeFields ''Response
 makeFields ''Timings
