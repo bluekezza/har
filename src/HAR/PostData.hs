@@ -27,7 +27,7 @@ instance FromJSON PostData where
     PostData <$> o .: "mimeType" <*>
     ((PostParams <$> (parseJSON =<< o .: "params")) <|>
      (PostText <$> o .: "text")) <*>
-    o .: "comment"
+    o .:? "comment"
   parseJSON _ = mzero
 
 instance ToJSON PostData where
